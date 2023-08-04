@@ -1,22 +1,11 @@
 <?php
-
-
-//secret.php?
-if (!isset($_GET['url'])) {
-    die(highlight_file(__FILE__));
+error_reporting(0);
+include('flag.php');
+if (!isset($_GET['flag'])){
+show_source(__FILE__);
+exit();
 }
-
-$url = $_GET['url'];
-
-$ch = curl_init();
-curl_setopt($ch, CURLOPT_URL, $url);
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 10);
-curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-
-$response = curl_exec($ch);
-curl_close($ch);
-
-echo $response;
-
+if (strcmp($_GET['flag'], $flag) == 0) {
+echo "success, flag:" . $flag;
+}
 ?>
