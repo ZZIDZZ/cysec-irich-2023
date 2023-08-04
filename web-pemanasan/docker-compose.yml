@@ -1,0 +1,10 @@
+version: '2'
+services:
+  pemanasan-web:
+    container_name: pemanasan-web
+    build:
+      context: ./
+    volumes:
+      - ./src/*:/var/www/html/*
+    ports:
+      - "10022:80"
